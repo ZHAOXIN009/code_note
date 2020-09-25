@@ -1,0 +1,23 @@
+class Solution {
+     
+public:
+    class comp{
+        public:  bool operator()(const string& a, const string& b){
+            return a+b<b+a;
+        }
+    };
+   
+    string largestNumber(vector<int>& nums) {
+        priority_queue<string, vector<string>, comp>pq;
+        for(int i: nums){
+            pq.push(to_string(i));
+        }
+        string res;
+        while(!pq.empty()){
+            res+=pq.top();
+            pq.pop();
+            
+        }
+        return res[0]=='0'?"0":res;
+    }
+};
